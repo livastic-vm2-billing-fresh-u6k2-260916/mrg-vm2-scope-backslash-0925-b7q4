@@ -1,0 +1,27 @@
+scopes:
+  source:
+    files:
+      backslash:
+        include:
+          - 'critical/guard\name.txt'
+      normal:
+        include:
+          - critical/normal.txt
+
+merge_protections_settings:
+  reporting_method: check-runs
+  post_comment: true
+  auto_merge_conditions: true
+
+merge_protections:
+  - name: VM2 backslash always-pass B7Q4
+    if: true
+    success_conditions: true
+  - name: VM2 server sees backslash scope B7Q4
+    if:
+      - scope = backslash
+    success_conditions: true
+  - name: VM2 server sees normal scope B7Q4
+    if:
+      - scope = normal
+    success_conditions: true
